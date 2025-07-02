@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
-import { makeRedirectUri } from 'expo-auth-session';
 import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google';
 import {
@@ -18,17 +17,12 @@ export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
-  const redirectUri = makeRedirectUri({
-  scheme: 'splitwiselite',
-  path: 'oauthredirect',
-});
 
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-    expoClientId: 'YOUR_EXPO_CLIENT_ID.apps.googleusercontent.com',
-	webClientId: 'YOUR_WEB_CLIENT_ID.apps.googleusercontent.com',
+    expoClientId: '',
+	webClientId: '',
     androidClientId: 'YOUR_ANDROID_CLIENT_ID.apps.googleusercontent.com',
     iosClientId: 'YOUR_IOS_CLIENT_ID.apps.googleusercontent.com',
-	redirectUri,
     scopes: ['profile', 'email'],
   });
 
